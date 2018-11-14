@@ -1,0 +1,81 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/King.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/Pieces/White/w_king_png_128px.png" type="Texture" id=2]
+[ext_resource path="res://Tilesets/Board1.tres" type="TileSet" id=3]
+[ext_resource path="res://Scripts/AddCells.gd" type="Script" id=4]
+
+[node name="Base" type="Node2D" index="0"]
+
+[node name="Pieces" type="Node2D" parent="." index="0"]
+
+[node name="King" type="Node2D" parent="Pieces" index="0"]
+
+position = Vector2( 576.596, 321.352 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Pieces/King" index="0"]
+
+z_index = 1
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Z Index" ]
+
+[node name="Camera2D" type="Camera2D" parent="Pieces/King" index="1"]
+
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 1, 1 )
+limit_left = -10000000
+limit_top = -10000000
+limit_right = 10000000
+limit_bottom = 10000000
+limit_smoothed = false
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = true
+smoothing_speed = 5.0
+offset_v = 0.0
+offset_h = 0.0
+drag_margin_left = 0.0
+drag_margin_top = 0.0
+drag_margin_right = 0.0
+drag_margin_bottom = 0.0
+editor_draw_screen = true
+editor_draw_limits = false
+editor_draw_drag_margin = true
+_sections_unfolded = [ "Editor", "Smoothing", "Transform" ]
+
+[node name="Board" type="TileMap" parent="." index="1"]
+
+mode = 0
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 128, 128 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( -1, 0, 0, -65536, 1, 0, -65535, 0, 0, -65534, 1, 0, -65533, 0, 0, -65532, 1, 0, -65531, 0, 0, -65530, 1, 0, -65529, 0, 0, -65528, 1, 0, -65527, 0, 0, 65535, 1, 0, 0, 0, 0, 1, 1, 0, 2, 0, 0, 3, 1, 0, 4, 0, 0, 5, 1, 0, 6, 0, 0, 7, 1, 0, 8, 0, 0, 9, 1, 0, 131071, 0, 0, 65536, 1, 0, 65537, 0, 0, 65538, 1, 0, 65539, 0, 0, 65540, 1, 0, 65541, 0, 0, 65542, 1, 0, 65543, 0, 0, 65544, 1, 0, 65545, 0, 0, 196607, 1, 0, 131072, 0, 0, 131073, 1, 0, 131074, 0, 0, 131075, 1, 0, 131076, 0, 0, 131077, 1, 0, 131078, 0, 0, 131079, 1, 0, 131080, 0, 0, 131081, 1, 0, 262143, 0, 0, 196608, 1, 0, 196609, 0, 0, 196610, 1, 0, 196611, 0, 0, 196612, 1, 0, 196613, 0, 0, 196614, 1, 0, 196615, 0, 0, 196616, 1, 0, 196617, 0, 0, 327679, 1, 0, 262144, 0, 0, 262145, 1, 0, 262146, 0, 0, 262147, 1, 0, 262148, 0, 0, 262149, 1, 0, 262150, 0, 0, 262151, 1, 0, 262152, 0, 0, 262153, 1, 0, 393215, 0, 0, 327680, 1, 0, 327681, 0, 0, 327682, 1, 0, 327683, 0, 0, 327684, 1, 0, 327685, 0, 0, 327686, 1, 0, 327687, 0, 0, 327688, 1, 0, 327689, 0, 0 )
+script = ExtResource( 4 )
+_sections_unfolded = [ "Cell", "Transform" ]
+__meta__ = {
+"_edit_lock_": true
+}
+ViewDistance = 4
+FadeDistance = 6
+
+[connection signal="move" from="Pieces/King" to="Board" method="_on_King_move"]
+
+
